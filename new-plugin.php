@@ -34,7 +34,7 @@ function new_plugin_setup()
     );
 
     wp_register_script(
-        'jsc-courses-frontend-script', //handle
+        'truth-new-plugin-frontend-script', //handle
         plugins_url('/src/frontend.js', __FILE__),
         array('jquery')
     );
