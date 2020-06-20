@@ -14,16 +14,23 @@ function new_plugin_setup()
     $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.asset.php');
 
     wp_register_script(
-        'truth-new-plugin-script',
+        'truth-new-plugin-editor-script',
         plugins_url('build/index.js', __FILE__),
         $asset_file['dependencies'],
         $asset_file['version']
     );
 
     wp_register_style(
-        'truth-new-block-style',
-        plugins_url('/src/style.css', __FILE__),
+        'truth-new-plugin-editor-style',
+        plugins_url('/build/editorStyle.css', __FILE__),
         array('wp-edit-blocks')
+    );
+
+    wp_register_style(
+        'truth-new-plugin-frontend-style',
+        plugins_url('/build/style-style.css', __FILE__),
+        array('wp-edit-blocks')
+
     );
 
     wp_register_script(
@@ -33,9 +40,10 @@ function new_plugin_setup()
     );
 
     register_block_type('truth/new-plugin-block', array(
-        'editor_script' => 'truth-new-plugin-script',
-        'editor_style'  => 'truth-new-block-style',
-        'script' => 'jsc-courses-frontend-script'
+        'editor_script' => 'truth-new-plugin-editor-script',
+        'editor_style'  => 'truth-new-plugin-editor-style',
+        'script'        => 'truth-new-plugin-frontend-script',
+        'style'         => 'truth-new-plugin-frontend-style'
     ));
 }
 

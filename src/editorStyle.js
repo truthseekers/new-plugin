@@ -1,0 +1,1 @@
+import './editorStyle.scss';
